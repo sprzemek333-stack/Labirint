@@ -6,9 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    [SerializeField]
-    int timeToEnd;
+    [SerializeField] int timeToEnd;
     bool gamePaused = false;
+    bool endGame = false;
+    bool win = false;
+    public int points = 0;
+    public int redKey = 0;
+    public int greenKey = 0;
+    public int goldKey = 0;
     void Start()
     {
         if (gameManager == null) gameManager = this;
@@ -27,11 +32,19 @@ public class GameManager : MonoBehaviour
             else PauseGame();
         }
     }
-
     void Stopper()
     {
         timeToEnd--;
-        Debug.Log("Time: " + timeToEnd +" s");
+        Debug.Log("Time: " + timeToEnd + " s");
+        if (timeToEnd <= 0 )
+        {
+            timeToEnd = 0;
+            endGame = true;
+        }
+        if (endGame)
+        {
+            EndGame();
+        }
     }
     public void PauseGame()
     {
@@ -44,5 +57,31 @@ public class GameManager : MonoBehaviour
         Debug.Log("Resume Game");
         Time.timeScale = 1f;
         gamePaused = false;
+    }
+    public void EndGame()
+    {
+        CancelInvoke("Stopper");
+        if (win)
+        {
+            Debug.Log("you win!! relod?");
+        }
+        else
+        {
+            Debug.Log("you lose!! reload?");
+        }
+
+    }
+    public void AddPoints(int point)
+    {
+        points += point;
+    }
+    public void AddTime(int addtime)
+    {
+        timeToEnd += addtime;
+    }
+    public void FreezeTime(int freeze)
+    {
+        CancelInvoke("Stopper");
+        InvokeRepeating("Stopper", freeze, 1);
     }
 }
