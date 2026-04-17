@@ -75,6 +75,21 @@ public class GameManager : MonoBehaviour
     {
         points += point;
     }
+    public void AddKey(KeyColor color)
+    {
+        if (color == KeyColor.Gold)
+        {
+            goldKey++;
+        }
+        else if (color == KeyColor.Green)
+        {
+            greenKey++;
+        }
+        else if (color == KeyColor.Red)
+        {
+            redKey++;
+        }
+    }
     public void AddTime(int addtime)
     {
         timeToEnd += addtime;

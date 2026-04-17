@@ -27,8 +27,6 @@ public class PortalTereport : MonoBehaviour
     {
         if (isInPortal && ! isForceToExitPortal)
         {
-            
-
             Vector3 portalToPlayer = player.transform.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up,portalToPlayer);
 
@@ -39,10 +37,10 @@ public class PortalTereport : MonoBehaviour
                 player.Rotate(Vector3.up, rotationDiff);
 
                 Vector3 posisionDiff = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
-
+                
                 player.position = reciver.position + posisionDiff;
                 player.localPosition += player.transform.forward * 0.2f;
-                player.position = new Vector3(player.position.x, 0, player.position.z);
+                player.position = new Vector3(player.position.x, 1, player.position.z);
                 
 
                 isInPortal = false;

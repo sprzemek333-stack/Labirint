@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalCamera : MonoBehaviour
@@ -7,10 +5,12 @@ public class PortalCamera : MonoBehaviour
     public Transform playerCamera;
     public Transform portal;
     public Transform otherPortal;
+
     private void Update()
     {
         PortalCameraController();
     }
+
     public void PortalCameraController()
     {
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
@@ -26,4 +26,6 @@ public class PortalCamera : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
     }
+
+
 }
