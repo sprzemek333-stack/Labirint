@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (gameManager == null) gameManager = this;
-        if (timeToEnd <= 0) timeToEnd = 100;
         InvokeRepeating("Stopper",2,1);
     }
     void Update()

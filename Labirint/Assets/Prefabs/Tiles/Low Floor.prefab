@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 826986621020384530}
   - component: {fileID: 826986621020384531}
   m_Layer: 6
-  m_Name: Terrain Low
+  m_Name: Low Floor
   m_TagString: Low
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
