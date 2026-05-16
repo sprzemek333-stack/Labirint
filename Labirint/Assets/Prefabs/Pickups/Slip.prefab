@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: {x: 0, y: 0.5, z: 0}
+  pickupClip: {fileID: 8300000, guid: f9790a97a6bc0fa4a82273d43095f372, type: 3}
 --- !u!65 &1398649007428598171
 BoxCollider:
   m_ObjectHideFlags: 0

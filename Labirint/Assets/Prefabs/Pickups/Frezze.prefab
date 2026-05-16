@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfc9581c4123b84a9a9caa1f8d9b176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 1
+  rotationSpeed: {x: 0, y: 5, z: 0}
+  pickupClip: {fileID: 8300000, guid: f9790a97a6bc0fa4a82273d43095f372, type: 3}
   freezeTime: 10
 --- !u!65 &9213217915335660798
 BoxCollider:

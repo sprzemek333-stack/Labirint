@@ -11,9 +11,37 @@ public class Look : MonoBehaviour
     private bool isUnlocked = false;
     private bool canOpen = false; // can the plyer open the look
 
+    public Material materialRed;
+    public Material materialGreen;
+    public Material materialGold;
+    public Renderer keyRender;
+    public Renderer lookRender;
+
+    private void SetMaterial()
+    {
+        switch (myColor)
+        {
+            case KeyColor.Red:
+                lookRender.material = materialRed;
+                keyRender.material = materialRed;
+                break;
+            case KeyColor.Green:
+                lookRender.material = materialGreen;
+                keyRender.material = materialGreen;
+                break;
+            case KeyColor.Gold:
+                lookRender.material = materialGold;
+                keyRender.material = materialGold;
+                break;
+        }
+    }
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+    void Start()
+    {
+        SetMaterial();
     }
     public void UseKey()
     {

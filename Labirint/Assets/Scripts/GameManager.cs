@@ -14,10 +14,26 @@ public class GameManager : MonoBehaviour
     public int redKey = 0;
     public int greenKey = 0;
     public int goldKey = 0;
+    
+    
+    AudioSource sfxAudioSource;
+
+    public AudioClip pauseClip;
+    public AudioClip resumeClip;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+
+    public MusicManager musicManager;
     void Start()
     {
         if (gameManager == null) gameManager = this;
+        sfxAudioSource = GetComponent<AudioSource>();
         InvokeRepeating("Stopper",2,1);
+    }
+    public void PlayClip(AudioClip clip)
+    {
+        sfxAudioSource.clip = clip;
+        sfxAudioSource.Play();
     }
     void Update()
     {
@@ -49,12 +65,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Pause Game");
         Time.timeScale = 0f;
+        musicManager.OnGamePause();
+        PlayClip(pauseClip);
         gamePaused = true;
     }
     public void ResumeGame()
     {
         Debug.Log("Resume Game");
         Time.timeScale = 1f;
+        musicManager.OnGameResume();
+        PlayClip(resumeClip);
         gamePaused = false;
     }
     public void EndGame()
@@ -63,10 +83,12 @@ public class GameManager : MonoBehaviour
         if (win)
         {
             Debug.Log("you win!! relod?");
+            PlayClip(winClip);
         }
         else
         {
             Debug.Log("you lose!! reload?");
+            PlayClip(loseClip);
         }
 
     }
@@ -98,4 +120,6 @@ public class GameManager : MonoBehaviour
         CancelInvoke("Stopper");
         InvokeRepeating("Stopper", freeze, 1);
     }
+
+
 }
