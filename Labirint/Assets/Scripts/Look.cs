@@ -55,19 +55,19 @@ public class Look : MonoBehaviour
         if (GameManager.gameManager.redKey > 0 && myColor == KeyColor.Red)
         {
             isUnlocked = true;
-            GameManager.gameManager.redKey--;
+            GameManager.gameManager.AddKey(KeyColor.Red,-1);
             return true;
         }
         else if (GameManager.gameManager.greenKey > 0 && myColor == KeyColor.Green)
         {
             isUnlocked = true;
-            GameManager.gameManager.greenKey--;
+            GameManager.gameManager.AddKey(KeyColor.Green, -1);
             return true;
         }
         else if (GameManager.gameManager.goldKey > 0 && myColor == KeyColor.Gold)
         {
             isUnlocked = true;
-            GameManager.gameManager.goldKey--;
+            GameManager.gameManager.AddKey(KeyColor.Gold, -1);
             return true;
         }
         else
@@ -80,6 +80,7 @@ public class Look : MonoBehaviour
         if (other.tag == "Player")
         {
             canOpen = true;
+            GameManager.gameManager.SetUseText("Press E to open the look");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -87,9 +88,9 @@ public class Look : MonoBehaviour
         if (other.tag == "Player")
         {
             canOpen = false;
+            GameManager.gameManager.SetUseText("");
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canOpen && !isUnlocked)
